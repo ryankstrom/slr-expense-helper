@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Claude Code project settings
+.claude/
+
+# Local test receipts (don't commit personal data)
+*.jpg
+*.jpeg
+*.png
+*.pdf
+!docs/**/*.png
+!docs/**/*.jpg
+
+# Editor / OS
+*.swp
+.idea/
+.vscode/
+node_modules/

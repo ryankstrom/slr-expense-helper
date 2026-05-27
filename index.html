@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SLR Expense Helper</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="top-stripe" aria-hidden="true"></div>
+  <header>
+    <div class="brand">
+      <img
+        class="brand-logo"
+        src="https://www.consultancy-me.com/profile/media/slr-consulting-logo-2025-11-16-090400560.png"
+        alt="SLR Consulting"
+      />
+      <div class="brand-divider" aria-hidden="true"></div>
+      <div class="brand-text">
+        <div class="brand-product">Expense Helper</div>
+        <div class="brand-tagline">Making sustainability happen &mdash; one receipt at a time.</div>
+      </div>
+    </div>
+    <ol class="instructions">
+      <li>Take pictures of all your receipts, and name them with the description of what that expense is about (e.g. team-dinner.jpg).</li>
+      <li>Drop receipts (PDF, JPG, PNG, etc.) below.</li>
+    </ol>
+    <p class="subtitle">
+      We'll read date, total, vendor, and category off each one and rename it for your expense report.
+      Everything runs in your browser &mdash; nothing is uploaded.
+    </p>
+  </header>
+
+  <main>
+    <section id="drop-zone" tabindex="0" aria-label="Drop receipts here">
+      <div class="drop-inner">
+        <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true">
+          <path fill="currentColor" d="M19 13v6H5v-6H3v6a2 2 0 002 2h14a2 2 0 002-2v-6h-2zm-6-2.17l2.59 2.58L17 12l-5-5-5 5 1.41 1.41L11 10.83V17h2v-6.17z"/>
+        </svg>
+        <p><strong>Drop receipts here</strong> or <button type="button" id="browse-btn">browse files</button></p>
+        <p class="hint">PDF, JPG, PNG, BMP, WebP &middot; multiple files OK</p>
+      </div>
+      <input type="file" id="file-input" multiple
+        accept="application/pdf,image/png,image/jpeg,image/bmp,image/webp" hidden />
+    </section>
+
+    <section id="status-bar" hidden>
+      <span id="status-text">Idle</span>
+      <div class="progress"><div id="progress-fill"></div></div>
+    </section>
+
+    <section id="files-section" hidden>
+      <div class="files-header">
+        <h2>Files</h2>
+        <div class="actions">
+          <button type="button" id="download-zip" disabled>Download all (ZIP)</button>
+          <button type="button" id="clear-all" class="ghost">Clear</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="files-table">
+          <thead>
+            <tr>
+              <th>Original</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Vendor</th>
+              <th>Category</th>
+              <th>New filename</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-row">
+      <span>&copy; SLR Consulting &middot; Expense Helper</span>
+      <span class="footer-credits">
+        OCR by <a href="https://tesseract.projectnaptha.com/" target="_blank" rel="noopener">Tesseract.js</a> &middot;
+        PDF by <a href="https://mozilla.github.io/pdf.js/" target="_blank" rel="noopener">PDF.js</a> &middot;
+        ZIP by <a href="https://stuk.github.io/jszip/" target="_blank" rel="noopener">JSZip</a>
+      </span>
+    </p>
+  </footer>
+
+  <!-- Libraries from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
